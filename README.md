@@ -1,5 +1,9 @@
 # Timesheets Converter Tools
 
+[![Build Status](https://travis-ci.org/lucernae/timesheets-converter.svg?branch=master)](https://travis-ci.org/lucernae/timesheets-converter)
+
+[![codecov](https://codecov.io/gh/lucernae/timesheets-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/lucernae/timesheets-converter)
+
 ## What is this?
 
 This is a tool to bulk convert timesheets from different providers.

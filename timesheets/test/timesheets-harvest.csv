@@ -1,2 +1,5 @@
 "Date","Client","Project","Project Code","Task","Notes","Hours","Hours Rounded","Billable?","Invoiced?","First Name","Last Name","Employee?","External Reference URL"
 "2018-04-02","Kartoza","Administration","kartoza-admin","Admin","Weekly catchup with emails and issues","1.5","1.5","No","No","Rizky","Maulana","Yes",""
+"2018-04-02","Kartoza","Administration","kartoza-admin","Admin","First task.
+Second task.
+Third task.","1.5","1.5","No","No","Rizky","Maulana","Yes",""

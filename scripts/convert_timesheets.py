@@ -33,6 +33,18 @@ parser.add_argument(
     required=False
 )
 parser.add_argument(
+    '-l',
+    '--one_line',
+    action='store_true',
+    help='Merge multiline tasks description into one line.'
+)
+parser.add_argument(
+    '-a',
+    '--aggregate',
+    action='store_true',
+    help='Merge multiple tasks with the same description into one merged task'
+)
+parser.add_argument(
     'csv_input',
     metavar='input_path',
     # type=argparse.FileType('r'),
@@ -65,4 +77,6 @@ ts = TimeSheets()
 
 ts.load_csv(args.csv_input, target_type=get_record_type(args.input_type))
 
-ts.dump_csv(args.csv_output, target_type=get_record_type(args.output_type))
+ts.dump_csv(
+    args.csv_output, target_type=get_record_type(args.output_type),
+    one_line=args.one_line, aggregate=args.aggregate)

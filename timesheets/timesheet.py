@@ -1,6 +1,7 @@
 # coding=utf-8
 import csv
 import datetime
+from collections import OrderedDict
 
 
 class BaseTimeRecordDialect(csv.excel):
@@ -163,6 +164,21 @@ class TimeSheets(object):
     def records(self, value):
         self._records = value
 
+    def _aggregate_same_task(self):
+        mapping = OrderedDict()
+        for r in self.records:
+            key = (r.customer, r.project, r.task, r.notes)
+            if key not in mapping:
+                mapping[key] = r
+            else:
+                mapping[key].duration += r.duration
+
+        self.records = [v for k, v in mapping.iteritems()]
+
+    def _one_line_a_task(self):
+        for r in self.records:
+            r.notes = ' '.join(r.notes.strip().splitlines())
+
     def load_csv(self, filename, target_type=None, **fmtparams):
         if target_type:
             self.time_record_type = target_type
@@ -174,7 +190,17 @@ class TimeSheets(object):
                 record.from_dict(row)
                 self.records.append(record)
 
-    def dump_csv(self, filename, target_type=None, **fmtparams):
+    def dump_csv(
+            self, filename, target_type=None,
+            one_line=None, aggregate=None,
+            **fmtparams):
+
+        if one_line:
+            self._one_line_a_task()
+
+        if aggregate:
+            self._aggregate_same_task()
+
         with open(filename, 'w') as f:
             if target_type:
                 instance = target_type()

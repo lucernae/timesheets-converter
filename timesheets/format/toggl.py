@@ -21,7 +21,7 @@ class TogglTimeRecord(BaseTimeRecord):
             'task': 'Task',
             'time_duration': 'Duration',
             'duration': 'calculate_duration',
-            'notes': 'Notes'
+            'notes': 'Description'
         }
         dialect = TogglTimeRecordDialect
         date_format = '%Y-%m-%d'

@@ -45,6 +45,12 @@ parser.add_argument(
     required=False
 )
 parser.add_argument(
+    '-d',
+    '--date',
+    metavar='report_date',
+    required=False
+)
+parser.add_argument(
     'csv_input',
     metavar='input_path',
     # type=argparse.FileType('r'),
@@ -108,7 +114,7 @@ def report_aggregate(timesheet):
     days = reports['days']
 
     sorted_records = sorted(
-        timesheet.records, key= lambda x: (x.date, x.project))
+        timesheet.records, key=lambda x: (x.date, x.project))
 
     for r in sorted_records:
 
@@ -184,7 +190,10 @@ ts = TimeSheets()
 ts.load_csv(args.csv_input, target_type=get_record_type(args.input_type))
 
 
-today = datetime.strptime(datetime.now().strftime('%Y-%m-%d'), '%Y-%m-%d')
+if args.date:
+    today = datetime.strptime(args.date, '%Y-%m-%d')
+else:
+    today = datetime.strptime(datetime.now().strftime('%Y-%m-%d'), '%Y-%m-%d')
 
 
 if args.report_format == 'daily':

@@ -167,7 +167,7 @@ class TimeSheets(object):
     def _aggregate_same_task(self):
         mapping = OrderedDict()
         for r in self.records:
-            key = (r.customer, r.project, r.task, r.notes)
+            key = (r.customer, r.project, r.task, r.notes, r.date)
             if key not in mapping:
                 mapping[key] = r
             else:

@@ -37,3 +37,12 @@ Alias
 ```
 echo "alias convert_timesheets='${PWD}/scripts/convert_timesheets.py'" >> ~/.bash_profile
 ```
+
+
+# How to use
+
+I used below command to convert from toggl (with tags as project tasks) into sageone format
+
+```
+convert_timesheets.py -t toggl-tags -al <toggl-time-entries-input.csv> <sageone-output.csv>
+```

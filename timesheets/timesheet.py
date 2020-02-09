@@ -1,4 +1,5 @@
 # coding=utf-8
+from builtins import object
 import csv
 import datetime
 from collections import OrderedDict
@@ -23,7 +24,7 @@ class BaseTimeRecord(object):
 
         self._meta = self.Meta()
 
-    class Meta:
+    class Meta(object):
         fields_mapping = {
             'date': 'date',
             'customer': 'customer',
@@ -128,12 +129,12 @@ class BaseTimeRecord(object):
             target_instance = self
             fields_mapping = self._meta.fields_mapping
 
-        for p, f in fields_mapping.iteritems():
+        for p, f in fields_mapping.items():
             retval[f] = target_instance.__getattribute__(p)
         return retval
 
     def from_dict(self, value):
-        for p, f in self._meta.fields_mapping.iteritems():
+        for p, f in self._meta.fields_mapping.items():
             if f in value:
                 self.__setattr__(p, value[f])
             elif hasattr(self, f):
@@ -173,7 +174,7 @@ class TimeSheets(object):
             else:
                 mapping[key].duration += r.duration
 
-        self.records = [v for k, v in mapping.iteritems()]
+        self.records = [v for k, v in mapping.items()]
 
     def _one_line_a_task(self):
         for r in self.records:
@@ -208,7 +209,7 @@ class TimeSheets(object):
                 instance = self.time_record_type()
 
             csv_fieldnames = [
-                field for prop, field in instance.field_mappings.iteritems()]
+                field for prop, field in instance.field_mappings.items()]
             csv_dialect = instance.dialect
             writer = csv.DictWriter(
                 f, dialect=csv_dialect,

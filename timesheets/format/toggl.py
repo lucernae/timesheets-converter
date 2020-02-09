@@ -1,4 +1,7 @@
 # coding=utf-8
+from __future__ import division
+from past.utils import old_div
+from builtins import object
 import csv
 
 from datetime import datetime
@@ -13,7 +16,7 @@ class TogglTimeRecordDialect(BaseTimeRecordDialect):
 
 class TogglTimeRecord(BaseTimeRecord):
 
-    class Meta:
+    class Meta(object):
         fields_mapping = {
             'date': 'Start date',
             'customer': 'Client',
@@ -32,13 +35,13 @@ class TogglTimeRecord(BaseTimeRecord):
         end = datetime.strptime(duration_string, time_format)
         start = datetime.strptime('00:00:00', time_format)
         diff = end - start
-        hours_duration = diff.total_seconds() / 3600
+        hours_duration = old_div(diff.total_seconds(), 3600)
         return hours_duration
 
 
 class TogglTagsTimeRecord(TogglTimeRecord):
 
-    class Meta:
+    class Meta(object):
         fields_mapping = {
             'date': 'Start date',
             'customer': 'Client',

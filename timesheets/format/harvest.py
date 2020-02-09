@@ -1,11 +1,12 @@
 # coding=utf-8
 
+from builtins import object
 from timesheets.timesheet import BaseTimeRecord, BaseTimeRecordDialect
 
 
 class HarvestTimeRecord(BaseTimeRecord):
 
-    class Meta:
+    class Meta(object):
         fields_mapping = {
             'date': 'Date',
             'customer': 'Client',

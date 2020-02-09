@@ -1,6 +1,6 @@
 # Timesheets Converter Tools
 
-[![Build Status](https://travis-ci.org/lucernae/timesheets-converter.svg?branch=master)](https://travis-ci.org/lucernae/timesheets-converter)
+[![Build Status](https://travis-ci.com/lucernae/timesheets-converter.svg?branch=master)](https://travis-ci.com/lucernae/timesheets-converter)
 
 [![codecov](https://codecov.io/gh/lucernae/timesheets-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/lucernae/timesheets-converter)
 

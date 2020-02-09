@@ -12,8 +12,7 @@ install:
 
 script:
   - flake8 timesheets
-  - cd timesheets
-  - coverage run -m unittest discover -p tests.py
+  - tox
 
 after_success:
   - cd timesheets

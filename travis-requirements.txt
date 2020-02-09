@@ -1,4 +1,5 @@
 flake8
 codecov
 coverage
+tox
 travis-tox

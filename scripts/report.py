@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+from __future__ import print_function
+from builtins import next
 import argparse
 from datetime import timedelta, datetime
 
@@ -18,7 +20,7 @@ parser.add_argument(
     '-t',
     '--input_type',
     metavar='types',
-    type=unicode,
+    type=str,
     choices=['sageone', 'harvest', 'toggl', 'toggl-tags'],
     help="Input types: ['sageone', 'harvest', 'toggl', 'toggl-tags']",
     default='sageone',
@@ -28,7 +30,7 @@ parser.add_argument(
     '-f',
     '--report_format',
     metavar='format_types',
-    type=unicode,
+    type=str,
     choices=['daily', 'weekly', 'standup'],
     help="Report format: ['daily', 'weekly', 'standup']",
     default='daily',
@@ -38,7 +40,7 @@ parser.add_argument(
     '-o',
     '--output_format',
     metavar='output_types',
-    type=unicode,
+    type=str,
     choices=['markdown', 'slack'],
     help="Output format: ['markdown', 'slack']",
     default='slack',
@@ -151,35 +153,35 @@ def format_output(report, report_type):
 
     if report_type == 'slack':
 
-        print '*{week}*'.format(week=report['week'])
+        print('*{week}*'.format(week=report['week']))
 
         for d in report['days']:
 
-            print '*{day}*'.format(day=d['day'])
+            print('*{day}*'.format(day=d['day']))
 
             for p in d['records']:
 
-                print '_{project}_'.format(project=p['project'])
+                print('_{project}_'.format(project=p['project']))
 
                 for n in p['notes']:
 
-                    print '- {note}'.format(note=n)
+                    print('- {note}'.format(note=n))
 
     elif report_type == 'markdown':
 
-        print '# {week}'.format(week=report['week'])
+        print('# {week}'.format(week=report['week']))
 
         for d in report['days']:
 
-            print '## {day}'.format(day=d['day'])
+            print('## {day}'.format(day=d['day']))
 
             for p in d['records']:
 
-                print '### {project}'.format(project=p['project'])
+                print('### {project}'.format(project=p['project']))
 
                 for n in p['notes']:
 
-                    print '- {note}'.format(note=n)
+                    print('- {note}'.format(note=n))
 
 
 args = parser.parse_args()

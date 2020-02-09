@@ -17,7 +17,7 @@ parser.add_argument(
     '-t',
     '--input_type',
     metavar='types',
-    type=unicode,
+    type=str,
     choices=['sageone', 'harvest', 'toggl', 'toggl-tags'],
     help="Input types: ['sageone', 'harvest', 'toggl', 'toggl-tags']",
     required=True
@@ -26,7 +26,7 @@ parser.add_argument(
     '-o',
     '--output_type',
     metavar='types',
-    type=unicode,
+    type=str,
     choices=['sageone', 'harvest', 'toggl', 'toggl-tags'],
     help="Input types: ['sageone', 'harvest', 'toggl', 'toggl-tags']",
     default='sageone',
